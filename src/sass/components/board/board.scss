@@ -1,0 +1,24 @@
+.board__board {
+    padding: 1rem;
+    position: relative;
+
+    .board__note {
+        background: #eee;
+        width: 230px;
+        position: absolute;
+        border-radius: 8px;
+        
+        & .note__header {
+            padding: 5px 10px 5px 40%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid $el-link-new-color;
+        }
+
+        & .note__body {
+            outline: none;
+            padding: 10px;
+            min-height: 200px;
+        }
+    }
+}
