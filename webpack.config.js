@@ -20,7 +20,9 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin(),
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: './index.html'
+        }),
         new copyWebpackPlugin({
             patterns: [{
                 from: path.resolve(__dirname, 'src/favicon.ico'),

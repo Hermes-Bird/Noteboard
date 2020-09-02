@@ -1,0 +1,25 @@
+.board__header {
+    display: flex;
+    justify-content: space-between;
+    background-color: $el-header-color;
+    user-select: none;
+    padding: 1rem;
+
+    & .boardname {
+        display: inline-block;
+        font-size: 1rem;
+        padding-left: 1rem;
+        border-radius: 15px;
+        font-weight: 500;
+        outline: none;
+    }
+
+    .btn {
+        outline: none;
+        @include button
+    }
+
+    & .btn-delete:active, & .btn-exit:active {
+        color: red
+    }
+}

@@ -1,0 +1,35 @@
+.board__toolbar {
+    color: #eee;
+    padding: 5px;
+    background: $el-link-new-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    
+    & .toolbar__leftside{
+        & .btn {
+            @include button;
+            margin-right: 5px;
+            transition: all .3s;
+            border-radius: 5px;
+    
+            &.active {
+                color: aqua;
+            }
+    
+            &:hover {
+                background-color: $el-link-plus-color;    
+            }
+        }
+    }
+
+    .toolbar__rightside {
+        display: flex;
+        padding-right: 20px;
+        
+        & .color-chose {
+            margin-left: 10px;
+        }
+    }
+}

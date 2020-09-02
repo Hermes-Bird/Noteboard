@@ -1,5 +1,19 @@
+@import './variables';
+@import './mixins';
+
+@import './components/elpage.scss';
+@import './components/board/header.scss';
+@import './components//board/toolbar.scss';
+@import './components//board/board.scss';
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: $root-font-size;
 }
