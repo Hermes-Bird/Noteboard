@@ -1,7 +1,7 @@
 import { $ } from '../dom/Dom'
-import { Field } from './components/field/Field'
-import { Header } from './components/header/Header'
-import { Toolbar } from './components/toolbar/Toolbar'
+import { Field } from '../components/field/Field'
+import { Header } from '../components/header/Header'
+import { Toolbar } from '../components/toolbar/Toolbar'
 
 export class Board {
     constructor(selector) {

@@ -1,4 +1,4 @@
-import { BoardComponent } from '../../BoardComponent';
+import { BoardComponent } from '../../core/BoardComponent';
 import { createField } from './field.template';
 
 export class Field extends BoardComponent {
@@ -7,15 +7,23 @@ export class Field extends BoardComponent {
     } 
 
     constructor(root) {
-        super(root)
+        super(root, {
+            name: 'Field',
+            listeners:['click']
+        })
         this.init()   
     }
 
     init() {
+        super.init()
         this.$root.html(createField())
     }
 
     toHtml() {
         return this.$root.$el
+    }
+
+    onClick(event) {
+        console.log(event)
     }
 }

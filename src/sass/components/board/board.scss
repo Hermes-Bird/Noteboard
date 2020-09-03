@@ -1,8 +1,9 @@
 .board__board {
     padding: 1rem;
     position: relative;
+    height: 82vh;
 
-    .board__note {
+    & .board__note {
         background: #eee;
         width: 230px;
         position: absolute;

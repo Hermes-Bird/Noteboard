@@ -1,4 +1,4 @@
-import { BoardComponent } from '../../BoardComponent';
+import { BoardComponent } from '../../core/BoardComponent';
 import { createToolbar } from './toolbar.template';
 
 export class Toolbar extends BoardComponent {
@@ -7,11 +7,15 @@ export class Toolbar extends BoardComponent {
     } 
 
     constructor(root) {
-        super(root)
+        super(root, {
+            name: 'Toolbar',
+            listeners:[]
+        })
         this.init()
     }
 
     init() {
+        super.init()
         this.$root.html(createToolbar())
     }
 

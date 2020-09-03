@@ -8,8 +8,16 @@ class DomElement {
     append(html) {
         this.$el.append(html)
     }
+
+    on(eventName, fn) {
+        this.$el.addEventListener(eventName, fn)
+    }
+
+    rmListener(eventName, fn) {
+        this.$el.removeEventListener(eventName, fn)
+    }
     
-    html(layout){
+    html(layout) {
         if (layout || typeof layout === 'string') {
             this.$el.innerHTML = layout
             return this

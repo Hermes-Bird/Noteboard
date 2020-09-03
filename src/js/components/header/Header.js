@@ -1,4 +1,4 @@
-import { BoardComponent } from '../../BoardComponent';
+import { BoardComponent } from '../../core/BoardComponent';
 
 export class Header extends BoardComponent {
     static componentClass() {
@@ -6,7 +6,10 @@ export class Header extends BoardComponent {
     } 
 
     constructor(root) {
-        super(root)
+        super(root, {
+            name: 'Header',
+            listeners: []
+        })
         this.init()   
     }
 
