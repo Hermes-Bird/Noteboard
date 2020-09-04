@@ -24,6 +24,32 @@ class DomElement {
         }
         else return this.$el.outerHTML
     }
+
+    addClass(str) {
+        this.$el.classList.add(str)
+    }
+
+    rmClass(str) {
+        this.$el.classList.remove(str)
+    }
+
+    findAll(selector) {
+        return Array.from(this.$el.querySelectorAll(selector))
+            .map(el => $(el))
+
+    }
+
+    find(selector) {
+        return this.$el.querySelector(selector)
+    }
+
+    data(field) {
+        return this.$el.dataset[field]
+    }
+
+    matches(selector) {
+        return this.$el.matches(selector)
+    }
 }
 
 export function $(root) {

@@ -8,12 +8,13 @@ export class Header extends BoardComponent {
     constructor(root) {
         super(root, {
             name: 'Header',
-            listeners: []
+            listeners: ['click']
         })
         this.init()   
     }
 
     init() {
+        super.init()
         this.$root.html(`
             <input class="boardname" type="text" value="New Board">
                     
@@ -31,6 +32,10 @@ export class Header extends BoardComponent {
                 </button>
             </div>
         `)
+    }
+
+    onClick() {
+        
     }
 
     toHtml() {

@@ -2,6 +2,7 @@ import { $ } from '../dom/Dom'
 import { Field } from '../components/field/Field'
 import { Header } from '../components/header/Header'
 import { Toolbar } from '../components/toolbar/Toolbar'
+import { Modal } from '../components/modal/Modal'
 
 export class Board {
     constructor(selector) {
@@ -9,7 +10,8 @@ export class Board {
         const components = [
             Header,
             Toolbar,
-            Field
+            Field,
+            Modal
         ]
         this.components = []
         this.init(components)
