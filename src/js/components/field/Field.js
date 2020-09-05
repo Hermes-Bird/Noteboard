@@ -1,5 +1,7 @@
 import { BoardComponent } from '../../core/BoardComponent';
+import { $ } from '../../dom/Dom';
 import { createField } from './field.template';
+import { moveHandler } from './moveHandler';
 
 export class Field extends BoardComponent {
     static componentClass() {
@@ -9,7 +11,7 @@ export class Field extends BoardComponent {
     constructor(root) {
         super(root, {
             name: 'Field',
-            listeners:['click']
+            listeners:['mousedown']
         })
         this.init()   
     }
@@ -23,7 +25,10 @@ export class Field extends BoardComponent {
         return this.$root.$el
     }
 
-    onClick(event) {
-        console.log(event)
+    onMousedown(event) {
+        const $target = $(event.target)
+        const $note = $target.closest('[data-type="note"]') 
+        // move handler
+        if ($note) moveHandler(this.$root ,$note, event)
     }
 }

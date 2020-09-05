@@ -41,6 +41,7 @@
                 border-bottom: 1px solid $el-link-new-color;
                 
                 & .modal-close {
+                    user-select: none;
                     cursor: pointer;
                 }
             }

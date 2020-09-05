@@ -50,6 +50,15 @@ class DomElement {
     matches(selector) {
         return this.$el.matches(selector)
     }
+
+    closest(selector) {
+        const el = this.$el.closest(selector)
+        return el ? $(el) : null
+    }
+
+    getRect() {
+        return this.$el.getBoundingClientRect();
+    }
 }
 
 export function $(root) {
