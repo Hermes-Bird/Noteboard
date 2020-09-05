@@ -1,8 +1,9 @@
 .board__board {
     padding: 1rem;
     position: relative;
+    height: 82vh;
 
-    .board__note {
+    & .board__note {
         background: #eee;
         width: 230px;
         position: absolute;
@@ -13,6 +14,11 @@
             display: flex;
             justify-content: space-between;
             border-bottom: 2px solid $el-link-new-color;
+
+            & .note-delete {
+                user-select: none;
+                cursor: pointer;
+            }
         }
 
         & .note__body {

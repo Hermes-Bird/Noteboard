@@ -22,4 +22,8 @@
     & .btn-delete:active, & .btn-exit:active {
         color: red
     }
+
+    & .btn-add:active {
+        color: $add-active-color;
+    }
 }

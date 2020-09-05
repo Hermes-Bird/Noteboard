@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Anime</title>
@@ -15,6 +16,10 @@
                 <input class="boardname" type="text" value="New Board">
                 
                 <div class="header__panel">
+                    <button class="btn btn-delete">
+                        <i class="material-icons" aria-hidden="true">control_point</i>
+                    </button>
+
                     <button class="btn btn-delete">
                         <i class="material-icons" aria-hidden="true">delete_outline</i>
                     </button>
@@ -73,6 +78,28 @@
                     <div class="note__body" contenteditable>Yare Yare Daze</div>
                 </div>
             </div>
+
+            <div class="board__modal">
+                <div class="modal__overlay">
+                    <div class="modal__window">
+                        <div class="modal-header">
+                            <div class="modal-title">
+                                Enter note title
+                            </div>
+                            <div class="modal-close">
+                                &times;
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" name="" id="" value="standartTitle">
+                        </div>
+                        <div class="modal-footer">
+                            <button>Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </body>

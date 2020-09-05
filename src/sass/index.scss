@@ -1,11 +1,11 @@
 @import './variables';
 @import './mixins';
 
-@import './components/elpage.scss';
+@import './components/elpage/elpage.scss';
 @import './components/board/header.scss';
 @import './components//board/toolbar.scss';
 @import './components//board/board.scss';
-
+@import './components/board/modal.scss';
 
 * {
     margin: 0;
