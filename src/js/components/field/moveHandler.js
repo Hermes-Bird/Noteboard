@@ -4,6 +4,7 @@ export function moveHandler($root, $note, event) {
     const parentRect = $($note.$el.parentElement).getRect()
     const rect = $note.getRect()
     
+    // current padding
     const min = 16
 
     const maxTop = parentRect.height - rect.height - min
@@ -25,7 +26,7 @@ export function moveHandler($root, $note, event) {
         
 
         if (min > left) $note.$el.style.left = `${min}px`
-        if (maxLeft < left) $note.$el.style.left = `${maxьюбььььбLeft}px`
+        if (maxLeft < left) $note.$el.style.left = `${maxLeft}px`
 
         if (min > top) $note.$el.style.top = `${min}px`
         if (maxTop < top) $note.$el.style.top = `${maxTop}px`

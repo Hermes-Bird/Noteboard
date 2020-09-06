@@ -6,8 +6,9 @@ export class Toolbar extends BoardComponent {
         return 'board__toolbar'
     } 
 
-    constructor(root) {
+    constructor(root, options) {
         super(root, {
+            ...options,
             name: 'Toolbar',
             listeners:[]
         })
@@ -16,10 +17,9 @@ export class Toolbar extends BoardComponent {
 
     init() {
         super.init()
-        this.$root.html(createToolbar())
     }
 
     toHtml() {
-        return this.$root.$el
+        return this.$root.html(createToolbar()).$el
     }
 }

@@ -2,20 +2,29 @@
     padding: 1rem;
     position: relative;
     height: 82vh;
+    width: 100vw;
 
     & .board__note {
         background: #eee;
         width: 230px;
         position: absolute;
+        border: 1px solid;
         border-radius: 8px;
         
         & .note__header {
-            padding: 5px 10px 5px 40%;
-            display: flex;
-            justify-content: space-between;
+            user-select: none;
+            padding: 5px 10px 5px 5px;
+            display: grid;
+            grid-template-columns: 90% 10%;
             border-bottom: 2px solid $el-link-new-color;
+            & .note-title{
+                display: inline-block;
+                justify-self: center;
+            }
 
             & .note-delete {
+                display: inline-block;
+                justify-self: end;
                 user-select: none;
                 cursor: pointer;
             }

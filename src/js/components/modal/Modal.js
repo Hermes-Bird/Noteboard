@@ -6,8 +6,9 @@ export class Modal extends BoardComponent {
         return 'board__modal'
     }
 
-    constructor(root) {
+    constructor(root, options) {
         super(root, {
+            ...options,
             listeners: ['click'],
             name: 'Modal'
         })
@@ -37,9 +38,8 @@ export class Modal extends BoardComponent {
             </div>
         `)
         
-        // TEST
-        window.act = this.activeModal.bind(this)
-        window.unact = this.unactiveModal.bind(this)
+        this.activeModal = this.activeModal.bind(this)
+        this.__on('header:add', this.activeModal)
     }
 
     activeModal() {
@@ -59,8 +59,14 @@ export class Modal extends BoardComponent {
 
     onClick(event) {
         const $target = $(event.target)
-        if ($target.data('type') === 'submit' || $target.data('type') === 'close') {
+        if ($target.data('type') === 'submit') {
+            // get title from modal and emit modal add event
             const title = this.unactiveModal()
+            this.__emit('modal:add', title)
+        } else if ($target.data('type') === 'close') {
+            // just close modal
+            this.unactiveModal()
         }
+
     }
 }

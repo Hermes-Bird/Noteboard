@@ -9,6 +9,10 @@ class DomElement {
         this.$el.append(html)
     }
 
+    insertHtml(place, layout) {
+        this.$el.insertAdjacentHTML(place, layout)
+    }
+
     on(eventName, fn) {
         this.$el.addEventListener(eventName, fn)
     }
