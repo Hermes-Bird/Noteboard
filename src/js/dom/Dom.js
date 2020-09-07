@@ -47,6 +47,10 @@ class DomElement {
         return this.$el.querySelector(selector)
     }
 
+    lastChild() {
+        return $(this.$el.lastElementChild)
+    }
+
     data(field) {
         return this.$el.dataset[field]
     }
@@ -62,6 +66,14 @@ class DomElement {
 
     getRect() {
         return this.$el.getBoundingClientRect();
+    }
+
+    get id() {
+        return this.$el.id
+    }
+
+    remove() {
+        this.$el.remove()
     }
 }
 

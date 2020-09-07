@@ -14,3 +14,21 @@ export function storage(key, value) {
     if (!value) return JSON.parse(localStorage.getItem(key))
     localStorage.setItem(key, JSON.stringify(value))
 }
+
+export function camelToDashCase(str) {
+    let reg = /[A-Z]/g.exec(str)
+    while (reg) {
+        str = str.replace(reg[0], `-${reg[0].toLowerCase()}`)
+        reg = /[A-Z]/g.exec(str)
+    }
+    return str
+}
+
+
+export function removeKey(obj, targetKey) {
+    const newObj = {}
+    Object.keys({...obj}).forEach(key => {
+        if (key !== targetKey) newObj[key] = obj[key]
+    })
+    return newObj
+}

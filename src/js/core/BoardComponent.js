@@ -21,7 +21,7 @@ export class BoardComponent extends DomListener {
     }
 
     __dispatch(action) {
-        this.store.dispach(action)
+        this.store.dispatch(action)
     }
 
     onChange(changes) {
@@ -29,7 +29,7 @@ export class BoardComponent extends DomListener {
     }
 
     isWatching(key) {
-        return this.subscribed.inclusdes(key)
+        return this.subscribed.includes(key)
     }
 
     init() {

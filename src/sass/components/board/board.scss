@@ -10,7 +10,12 @@
         position: absolute;
         border: 1px solid;
         border-radius: 8px;
-        
+        transition: border .1s ease-in;
+
+        &.selected {
+            border: 3px solid $el-link-plus-color;
+        }
+
         & .note__header {
             user-select: none;
             padding: 5px 10px 5px 5px;
