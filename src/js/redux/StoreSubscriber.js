@@ -12,9 +12,9 @@ export class StoreSubscriber {
 
         this.subscriber = this.store.subscribe(state => {
             Object.keys(state).forEach(key => {
-                if (!isEqual(this.prevState, state)) {
+                if (!isEqual(this.prevState[key], state[key])) {
                     components.forEach(component => {
-                        if (component.isWatching(key)) component.stateChanged(state)
+                        if (component.isWatching(key)) component.onStateChange(state[key])                        
                     })
                 }
             })

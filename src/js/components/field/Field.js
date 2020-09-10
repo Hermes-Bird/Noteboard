@@ -1,6 +1,12 @@
 import { BoardComponent } from '../../core/BoardComponent';
 import { $ } from '../../dom/Dom';
-import { addNoteAction, changeCoords, changetText, removeNoteAction } from '../../redux/actions/actions';
+import { addNoteAction, 
+         changeCoords, 
+         changeCurrentNote, 
+         changeStyles, 
+         changetText, 
+         removeNoteAction 
+        } from '../../redux/actions/actions';
 import { defaultNoteStyles } from '../constants';
 import { createField, createNote } from './field.template';
 import { moveHandler } from './moveHandler';
@@ -25,7 +31,35 @@ export class Field extends BoardComponent {
         this.$root.html(createField(this.store.getState().notes))
 
         this.addNote = this.addNote.bind(this)
+        this.changeStyle = this.changeStyle.bind(this)
+        this.changeColorStyle = this.changeColorStyle.bind(this)
+        this.toolbarStyleChanged = this.toolbarStyleChanged.bind(this)
+
+        this.__on('toolbar:style-change', this.toolbarStyleChanged)
         this.__on('modal:add', this.addNote)
+    }
+
+    changeStyle(style) {
+        this.selection.find('[data-type="text"]').style[style.field] = style.value
+        this.__dispatch(changeStyles(style))
+    }
+
+    changeColorStyle(style) {
+        const key = Object.keys(style)[0]
+        this.selection.style(key, style[key])
+        this.__dispatch(changeStyles({
+            field: key,
+            value: style[key]
+        }))
+    }
+
+    toolbarStyleChanged(style) {
+        if (this.selection) {
+            console.log(style)
+            if (style.value) this.changeStyle(style)
+            else this.changeColorStyle(style)
+            this.__emit('field:style-change')
+        }
     }
     
     addNote(title) {
@@ -47,6 +81,7 @@ export class Field extends BoardComponent {
     selectNote($note) {
         if (this.selection) this.selection.rmClass('selected')
         this.selection = $note
+        this.__dispatch(changeCurrentNote($note.data('id')))
         this.selection.addClass('selected')
     }
     

@@ -32,3 +32,11 @@ export function removeKey(obj, targetKey) {
     })
     return newObj
 }
+
+export function parseButtonStyle(str) {
+    const arr = str.split(':')
+    return {
+        field: arr[0],
+        value: arr[1]
+    }
+}

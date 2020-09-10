@@ -4,6 +4,11 @@ import * as types from './actions/types'
 export function rootReducer(action, state) {
     let id
     switch (action.type) {
+        case types.INIT: 
+        return {
+            ...state,
+            currentNote: ''
+        }
         case types.ADD_NOTE: 
             id = action.data.id
             return {
@@ -17,10 +22,11 @@ export function rootReducer(action, state) {
                 }
             }
         case types.REMOVE_NOTE: 
-            id = action.data.id
+            id = action.data.id.toString()
             const notes = removeKey(state.notes, id)
             return {
                 ...state,
+                currentNote: id === state.currentNote ? '' : id,
                 notes
             }
         case types.CHANGE_COORDS:
@@ -31,7 +37,10 @@ export function rootReducer(action, state) {
                     ...state.notes,
                     [id]: {
                         ...state.notes[id],
-                        styles: {...action.data.coord}
+                        styles: {
+                            ...state.notes[id].styles,
+                            ...action.data.coord
+                        }
                     }
                 }
             }
@@ -46,6 +55,32 @@ export function rootReducer(action, state) {
                         text: action.data.text
                     }
                 }
+            }
+        case types.CHANGE_CURRENT_NOTE: 
+            id = action.data
+            return {
+                ...state,
+                currentNote: id
+            }
+        case types.CHANGE_STYLES: 
+            id = state.currentNote
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    [id]: {
+                        ...state.notes[id],
+                        styles: {
+                            ...state.notes[id].styles,
+                            [action.data.field]: action.data.value
+                        }
+                    }
+                }
+            }
+        case types.CHANGE_BOARD_NAME:
+            return {
+                ...state,
+                boardName: action.data.name
             }
         default: return state 
     }

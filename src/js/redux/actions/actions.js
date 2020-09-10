@@ -27,3 +27,25 @@ export function changetText(data) {
         data
     }
 }
+
+
+export function changeCurrentNote(data) {
+    return {
+        type: types.CHANGE_CURRENT_NOTE,
+        data
+    }
+}
+
+export function changeStyles(data) {
+    return {
+         type: types.CHANGE_STYLES,
+         data
+    }
+}
+
+export function changeBoardName(data) {
+    return {
+        type: types.CHANGE_BOARD_NAME,
+        data
+    }
+}

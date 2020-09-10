@@ -68,6 +68,14 @@ class DomElement {
         return this.$el.getBoundingClientRect();
     }
 
+    style(field, value) {
+        if (typeof value === 'string') {
+            this.$el.style[field] = value
+            return this
+        }
+        else return this.$el.style[field]
+    }
+
     get id() {
         return this.$el.id
     }

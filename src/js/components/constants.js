@@ -4,6 +4,7 @@ export const defaultNoteStyles = {
     textAlign: 'left',
     fontWeight: 'normal',
     fontStyle: 'normal',
+    textDecoration: 'none',
     color: '#000000',
     backgroundColor: '#eeeeee'
 }

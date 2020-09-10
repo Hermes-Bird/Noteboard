@@ -8,12 +8,13 @@
         background: #eee;
         width: 230px;
         position: absolute;
-        border: 1px solid;
+        border: 1px solid black;
         border-radius: 8px;
         transition: border .1s ease-in;
 
         &.selected {
             border: 3px solid $el-link-plus-color;
+            z-index: 100;
         }
 
         & .note__header {

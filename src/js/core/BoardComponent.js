@@ -5,7 +5,7 @@ export class BoardComponent extends DomListener {
         super($root, options)
         this.store = options.store
         this.emiter = options.emiter
-        this.subscribed = options.subscribed || []
+        this.subscribers = options.subscribers || []
     }
 
     __on(eventName, fn) {
@@ -24,12 +24,12 @@ export class BoardComponent extends DomListener {
         this.store.dispatch(action)
     }
 
-    onChange(changes) {
+    onStateChange(changes) {
         console.log(`changes in ${this.name} => ${changes}`)
     }
 
     isWatching(key) {
-        return this.subscribed.includes(key)
+        return this.subscribers.includes(key)
     }
 
     init() {
