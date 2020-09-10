@@ -1,25 +1,29 @@
 import { BoardComponent } from '../../core/BoardComponent';
+import { $ } from '../../dom/Dom';
+import { changeBoardName } from '../../redux/actions/actions';
 
 export class Header extends BoardComponent {
     static componentClass() {
         return 'board__header'
     } 
 
-    constructor(root) {
+    constructor(root, options) {
         super(root, {
+            ...options,
             name: 'Header',
-            listeners: ['click']
+            listeners: ['click', 'input']
         })
         this.init()   
     }
 
     init() {
         super.init()
+        const name = this.store.getState().boardName
         this.$root.html(`
-            <input class="boardname" type="text" value="New Board">
+            <input class="boardname" type="text" value="${name}">
                     
             <div class="header__panel">
-                <button class="btn btn-add">
+                <button class="btn btn-add" data-type="add">
                     <i class="material-icons" aria-hidden="true">control_point</i>
                 </button>
 
@@ -34,8 +38,14 @@ export class Header extends BoardComponent {
         `)
     }
 
-    onClick() {
-        
+    onClick(event) {
+        const $target = $(event.target)
+        if ($target.closest('[data-type="add"]')) this.__emit('header:add', Date.now()) 
+    }
+
+    onInput(event) {
+        const text = event.target.value
+        this.__dispatch(changeBoardName({name: text}))
     }
 
     toHtml() {

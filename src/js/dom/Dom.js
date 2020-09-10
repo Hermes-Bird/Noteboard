@@ -9,6 +9,10 @@ class DomElement {
         this.$el.append(html)
     }
 
+    insertHtml(place, layout) {
+        this.$el.insertAdjacentHTML(place, layout)
+    }
+
     on(eventName, fn) {
         this.$el.addEventListener(eventName, fn)
     }
@@ -43,6 +47,10 @@ class DomElement {
         return this.$el.querySelector(selector)
     }
 
+    lastChild() {
+        return $(this.$el.lastElementChild)
+    }
+
     data(field) {
         return this.$el.dataset[field]
     }
@@ -58,6 +66,22 @@ class DomElement {
 
     getRect() {
         return this.$el.getBoundingClientRect();
+    }
+
+    style(field, value) {
+        if (typeof value === 'string') {
+            this.$el.style[field] = value
+            return this
+        }
+        else return this.$el.style[field]
+    }
+
+    get id() {
+        return this.$el.id
+    }
+
+    remove() {
+        this.$el.remove()
     }
 }
 
