@@ -23,6 +23,6 @@ export class StoreSubscriber {
     }
 
     unsubscribe() {
-        if (this.subscriber) this.subscriber.usnub()
+        if (this.subscriber) this.subscriber.unsub()
     }
 }

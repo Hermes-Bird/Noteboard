@@ -9,7 +9,7 @@ export class Modal extends BoardComponent {
     constructor(root, options) {
         super(root, {
             ...options,
-            listeners: ['click'],
+            listeners: ['click', 'keydown'],
             name: 'Modal'
         })
         this.init()
@@ -67,6 +67,12 @@ export class Modal extends BoardComponent {
             // just close modal
             this.unactiveModal()
         }
+    }
 
+    onKeydown(event) {
+        if (event.key === 'Enter') {
+            const title = this.unactiveModal()
+            this.__emit('modal:add', title)
+        }
     }
 }

@@ -1,18 +1,9 @@
-import { Board } from './js/core/Board'
-import { storage } from './js/core/utils'
-import { createStore } from './js/redux/createStore'
-import { initialState } from './js/redux/initialState'
-import { rootReducer } from './js/redux/rootReducer'
+import { BoardPage } from './js/routing/pages/BoardPage'
+import { DashboardPage } from './js/routing/pages/DashboardPage'
+import { Router } from './js/routing/Router'
 import './sass/index.scss'
 
-const currentState = storage('board') || initialState
-
-const store = createStore(rootReducer, currentState)
-
-const subscribe = store.subscribe(state => {
-    storage('board', state)
+new Router('#app', {
+    dashboard: DashboardPage,
+    board: BoardPage
 })
-
-const board = new Board('#app', store)
-
-board.render()

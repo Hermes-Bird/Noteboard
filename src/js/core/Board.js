@@ -5,10 +5,11 @@ import { Toolbar } from '../components/toolbar/Toolbar'
 import { Modal } from '../components/modal/Modal'
 import { EventEmiter } from './EventEmiter'
 import { StoreSubscriber } from '../redux/StoreSubscriber'
+import { changeDate } from '../redux/actions/actions'
 
 export class Board {
-    constructor(selector, store) {
-        this.$root = $(selector)
+    constructor(store) {
+        this.$root = $.create('div', 'board')
         const components = [
             Header,
             Toolbar,
@@ -16,6 +17,7 @@ export class Board {
             Modal
         ]
         this.store = store
+        this.emiter = new EventEmiter(),
         this.subscriber = new StoreSubscriber(store)
         this.components = []
         this.init(components)
@@ -23,7 +25,7 @@ export class Board {
 
     init(components) {
         const componetOptions = {
-            emiter: new EventEmiter(),
+            emiter: this.emiter,
             store: this.store
         }
 
@@ -33,9 +35,7 @@ export class Board {
         })
 
         this.subscriber.subscribeComponents(this.components)
-    }
-
-    render() {
+        
         this.components.forEach(component => {
             this.$root.append(component.toHtml())
         })
@@ -44,6 +44,7 @@ export class Board {
     destroy() {
         this.components.forEach(component => component.destroy())
         this.subscriber.unsubscribe()
+        this.emiter.destroy()
         this.$root.html('')
     }
 } 
