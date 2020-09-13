@@ -49,3 +49,10 @@ export function changeBoardName(data) {
         data
     }
 }
+
+export function changeDate() {
+    return {
+        type: types.CHANGE_LEAVE_DATE,
+        data: new Date()
+    }    
+}

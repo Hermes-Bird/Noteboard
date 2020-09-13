@@ -10,11 +10,6 @@ export function isEqual(a, b) {
     } else return a === b
 }
 
-export function storage(key, value) {
-    if (!value) return JSON.parse(localStorage.getItem(key))
-    localStorage.setItem(key, JSON.stringify(value))
-}
-
 export function camelToDashCase(str) {
     let reg = /[A-Z]/g.exec(str)
     while (reg) {

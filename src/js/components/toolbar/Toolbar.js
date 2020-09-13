@@ -44,13 +44,11 @@ export class Toolbar extends BoardComponent {
     onClick(event) {
         const $target = $(event.target).closest('[data-value]')
         if ($target) {
-            this.__emit('toolbar:style-change', parseButtonStyle($target.data('value'))) 
+            this.__emit('toolbar:style-change', parseButtonStyle($target.data('value')))
         }
     }
 
     onChange(event) {
-        console.log(event)
-        // event.preventDefault()
         const $target = $(event.target)
         if ($target.data('type') === 'color-picker' ) {
             this.__emit('toolbar:style-change', {[$target.data('style')]: $target.$el.value}) 

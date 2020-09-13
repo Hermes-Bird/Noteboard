@@ -82,6 +82,11 @@ export function rootReducer(action, state) {
                 ...state,
                 boardName: action.data.name
             }
+        case types.CHANGE_LEAVE_DATE: 
+            return {
+                ...state,
+                date: action.data
+            }
         default: return state 
     }
 }

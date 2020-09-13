@@ -1,6 +1,7 @@
 import { BoardComponent } from '../../core/BoardComponent';
 import { $ } from '../../dom/Dom';
-import { changeBoardName } from '../../redux/actions/actions';
+import { changeBoardName, changeDate } from '../../redux/actions/actions';
+import { ActivePage } from '../../routing/ActivePage';
 
 export class Header extends BoardComponent {
     static componentClass() {
@@ -27,11 +28,11 @@ export class Header extends BoardComponent {
                     <i class="material-icons" aria-hidden="true">control_point</i>
                 </button>
 
-                <button class="btn btn-delete">
+                <button class="btn btn-delete" data-type="delete">
                     <i class="material-icons" aria-hidden="true">delete_outline</i>
                 </button>
                 
-                <button class="btn btn-exit">
+                <button class="btn btn-exit" data-type="exit">
                     <i class="material-icons" aria-hidden="true">exit_to_app</i>
                 </button>
             </div>
@@ -40,7 +41,15 @@ export class Header extends BoardComponent {
 
     onClick(event) {
         const $target = $(event.target)
-        if ($target.closest('[data-type="add"]')) this.__emit('header:add', Date.now()) 
+        if ($target.closest('[data-type="add"]')) this.__emit('header:add', Date.now())
+        if ($target.closest('[data-type="exit"]')) {
+            this.__dispatch(changeDate())
+            window.location.hash = ''
+        }
+        if ($target.closest('[data-type="delete"')) {
+            localStorage.removeItem(ActivePage.getHash())
+            window.location.hash = ''
+        } 
     }
 
     onInput(event) {

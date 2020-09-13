@@ -1,12 +1,18 @@
-const listeners = {}
-
 export class EventEmiter {
+    constructor() {
+        this.listeners = {}
+    }
+
     subscribe(eventName, fn) {
-        if (!listeners[eventName]) listeners[eventName] = []
-        listeners[eventName].push(fn)
+        if (!this.listeners[eventName]) this.listeners[eventName] = []
+        this.listeners[eventName].push(fn)
     }
 
     emit(eventName, data) {
-        listeners[eventName].forEach(fn => fn(data))
+        this.listeners[eventName].forEach(fn => fn(data))
+    }
+
+    destroy() {
+        this.listeners = {}
     }
 }
